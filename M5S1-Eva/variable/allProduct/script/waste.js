@@ -34,6 +34,7 @@
 //   </div>
 // </div>
 
+//! Product Card
 const ProductCard = ({ product }) => {
   const [likes, setLikes] = React.useState(0);
   return (
@@ -46,6 +47,7 @@ const ProductCard = ({ product }) => {
   );
 };
 
+//!Product List
 const ProductList = () => {
   const [products, setProducts] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
