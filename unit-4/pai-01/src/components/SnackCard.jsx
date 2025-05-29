@@ -1,5 +1,6 @@
 import { ref, remove, update } from "firebase/database";
 import React, { useState } from "react";
+import { db } from "../firebase";
 
 const SnackCard = ({ snack }) => {
   const [isEditing, setIsEditing] = useState(false);
