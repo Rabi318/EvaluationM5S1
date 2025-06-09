@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetPokemonsQuery } from "../features/pokemon/pokemonReducer";
 import Loader from "../components/Loader";
@@ -36,8 +36,17 @@ const Dashboard = () => {
     sort === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
   );
 
+  const topRef = useRef(null);
+  useEffect(() => {
+    if (topRef.current) {
+      topRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }),
+    [page];
+
   return (
     <div className="container mx-auto p-4">
+      <div ref={topRef}></div>
       <Filters
         filter={filter}
         sort={sort}
