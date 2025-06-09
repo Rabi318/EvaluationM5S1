@@ -17,6 +17,7 @@ const Dashboard = () => {
   });
   if (isLoading) return <Loader />;
   if (error) return <ErrorBanner mess="Error Fetching Pokemons" />;
+  if (!data) return null;
 
   const handleFilterChange = (e) => {
     dispatch(setFilter(e.target.value));
@@ -36,17 +37,8 @@ const Dashboard = () => {
     sort === "asc" ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
   );
 
-  const topRef = useRef(null);
-  useEffect(() => {
-    if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }),
-    [page];
-
   return (
     <div className="container mx-auto p-4">
-      <div ref={topRef}></div>
       <Filters
         filter={filter}
         sort={sort}
