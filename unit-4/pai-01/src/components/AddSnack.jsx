@@ -66,7 +66,7 @@ const AddSnack = () => {
         required
       />
       <input
-        type="text"
+        type="number"
         name="rating"
         value={snack.rating}
         onChange={handleChange}
