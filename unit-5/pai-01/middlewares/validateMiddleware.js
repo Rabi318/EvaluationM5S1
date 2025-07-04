@@ -5,6 +5,7 @@ exports.validateAuthor = (req, res, next) => {
       .status(400)
       .json({ msg: "Name is required and must be a string" });
   }
+
   next();
 };
 

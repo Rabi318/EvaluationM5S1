@@ -9,8 +9,8 @@ const bookRoutes = require("./routes/bookRoute");
 const app = express();
 dotenv.config();
 
-app.use(express.json());
 connectDB();
+app.use(express.json());
 
 app.use(logger);
 
@@ -19,10 +19,6 @@ app.use("/books", bookRoutes);
 
 app.use(errorHandler);
 
-app.use((req, res) => {
-  res.status(404).json({ msg: "Route not Found" });
-});
-
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running on port ${process.env.PORT} 🚀🚀`);
 });
