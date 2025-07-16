@@ -2,12 +2,15 @@ const Book = require("../models/bookModel");
 
 exports.getBooks = async (req, res) => {
   try {
-    const query = { delete: false };
+    const query = { deleted: false };
     let books;
     if (req.query.top === "true") {
-      books = await Book.find(query).sort({ price: -1 }).limit(5);
+      books = await Book.find(query)
+        .sort({ price: -1 })
+        .limit(5)
+        .populate("author");
     } else {
-      books = await Book.find(query);
+      books = await Book.find(query).populate("author");
     }
 
     res.status(200).json({ msg: "success to get books", data: books });
