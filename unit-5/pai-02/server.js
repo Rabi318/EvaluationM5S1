@@ -7,6 +7,9 @@ app.use(express.json());
 connectDB();
 
 app.use("/api/v1/auth", require("./routes/authRoutes"));
+app.use("/api/v1/books", require("./routes/booksRoutes"));
+app.use("/api/v1/authors", require("./routes/authorRoutes"));
+app.use("/api/v1/stats", require("./routes/statsRoutes"));
 app.use((req, res) => {
   res.status(404).json({ error: "Not Found" });
 });
